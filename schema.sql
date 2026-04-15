@@ -1,12 +1,12 @@
-<!-- Creation de la base de données -->
+-- Creation de la base de données --
 create database if not exists tifosi character set utf8mb4 collate utf8mb4_unicode_ci;
 use tifosi;
 
 create user if not exists 'tifosi'@'localhost' identified by 'Essaiencore1fois007';
 grant all privileges on tifosi.* to 'tifosi'@'localhost';
-flush privilegies;
+flush privileges;
 
-<!-- Creation des tables-->
+-- Creation des tables--
 create table marque (
     id_marque int primary key auto_increment,
     nom varchar(50) not null
@@ -42,25 +42,25 @@ create table menu (
     nom varchar(50) not null,
     prix decimal(5,2) not null,
     id_focaccia int not null,
-    constraint fk_menu_focaccia foreign key (id_focaccia) references foccacia(id_focaccia)
+    constraint fk_menu_focaccia foreign key (id_focaccia) references focaccia(id_focaccia)
 );
 
-<!-- Liaisons -->
+-- Liaisons --
 
 create table composition_focaccia (
     id_focaccia int not null,
     id_ingredient int not null,
     primary key (id_focaccia, id_ingredient),
-    constraint fk_comprend_focaccia foreign key (id_focaccia) references foccacia(id_focaccia),
-    constraint fk_comprend_ingredient foreign key (id_ingredient) references ingredient(id_ingredient)
+    constraint fk_composition_focaccia foreign key (id_focaccia) references focaccia(id_focaccia),
+    constraint fk_composition_ingredient foreign key (id_ingredient) references ingredient(id_ingredient)
 );
 
 create table composition_menu (
     id_menu int not null,
     id_boisson int not null,
     primary key (id_menu, id_boisson),
-    constraint fk_contient_menu foreign key (id_menu) references menu(id_menu),
-    constraint fk_contient_boisson foreign key (id_boisson) references boisson(id_boisson)
+    constraint fk_composition_menu foreign key (id_menu) references menu(id_menu),
+    constraint fk_composition_boisson foreign key (id_boisson) references boisson(id_boisson)
 );
 
 create table achat (
@@ -68,6 +68,6 @@ create table achat (
     id_menu int not null,
     date_achat date not null,
     primary key (id_client, id_menu, date_achat),
-    constraint fk_achete_client foreign key (id_client) references client(id_client),
-    constraint fk_achete_menu foreign key (id_menu) references menu(id_menu)
+    constraint fk_achat_client foreign key (id_client) references client(id_client),
+    constraint fk_achat_menu foreign key (id_menu) references menu(id_menu)
 );
