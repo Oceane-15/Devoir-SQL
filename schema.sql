@@ -24,8 +24,8 @@ create table client (
     code_postal int not null
 );
 
-create table foccacia (
-    id_foccacia int primary key auto_increment,
+create table focaccia (
+    id_focaccia int primary key auto_increment,
     nom varchar(50) not null,
     prix decimal(5,2) not null
 );
@@ -41,21 +41,21 @@ create table menu (
     id_menu int primary key auto_increment,
     nom varchar(50) not null,
     prix decimal(5,2) not null,
-    id_foccacia int not null,
-    constraint fk_menu_foccacia foreign key (id_foccacia) references foccacia(id_foccacia)
+    id_focaccia int not null,
+    constraint fk_menu_focaccia foreign key (id_focaccia) references foccacia(id_focaccia)
 );
 
 <!-- Liaisons -->
 
-create table comprend (
-    id_foccacia int not null,
+create table composition_focaccia (
+    id_focaccia int not null,
     id_ingredient int not null,
-    primary key (id_foccacia, id_ingredient),
-    constraint fk_comprend_foccacia foreign key (id_foccacia) references foccacia(id_foccacia),
+    primary key (id_focaccia, id_ingredient),
+    constraint fk_comprend_focaccia foreign key (id_focaccia) references foccacia(id_focaccia),
     constraint fk_comprend_ingredient foreign key (id_ingredient) references ingredient(id_ingredient)
 );
 
-create table contient (
+create table composition_menu (
     id_menu int not null,
     id_boisson int not null,
     primary key (id_menu, id_boisson),
@@ -63,7 +63,7 @@ create table contient (
     constraint fk_contient_boisson foreign key (id_boisson) references boisson(id_boisson)
 );
 
-create table achete (
+create table achat (
     id_client int not null,
     id_menu int not null,
     date_achat date not null,
