@@ -37,14 +37,14 @@ insert into ingredient (id_ingredient, nom) values
 
 --Focaccia--
 insert into focaccia (id_focaccia, nom, prix) values
-(1, 'Mozaccia' 9.80),
-(2, 'Gorgonzollaccia' 10.80),
-(3, 'Raclaccia' 8.90),
-(4, 'Emmentalaccia' 9.80),
-(5, 'Tradizione' 8.90),
-(6, 'Hawaienne' 11.20),
-(7, 'Américaine' 10.80),
-(8, 'Paysanne' 12.80);
+(1, 'Mozaccia', 9.80),
+(2, 'Gorgonzollaccia', 10.80),
+(3, 'Raclaccia', 8.90),
+(4, 'Emmentalaccia', 9.80),
+(5, 'Tradizione', 8.90),
+(6, 'Hawaienne', 11.20),
+(7, 'Américaine', 10.80),
+(8, 'Paysanne', 12.80);
 
 --Boissons--
 insert into boisson (id_boisson, nom, id_marque) values
