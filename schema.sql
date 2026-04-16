@@ -50,6 +50,7 @@ create table menu (
 create table composition_focaccia (
     id_focaccia int not null,
     id_ingredient int not null,
+    quantite_grammes int not null,
     primary key (id_focaccia, id_ingredient),
     constraint fk_composition_focaccia foreign key (id_focaccia) references focaccia(id_focaccia),
     constraint fk_composition_ingredient foreign key (id_ingredient) references ingredient(id_ingredient)
