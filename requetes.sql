@@ -24,7 +24,7 @@ join focaccia f on cf.id_focaccia = f.id_focaccia where f.nom = 'Raclaccia';
 
 --6. Afficher le nom et le nombre d'ingrédients pour chaque foccacia--
 
-select f.nom count(cf.id_ingredient) as nombre_ingredients from focaccia f
+select f.nom, count(cf.id_ingredient) as nombre_ingredients from focaccia f
 join composition_focaccia cf on f.id_focaccia = cf.id_focaccia group by f.nom;
 
 --7. Afficher le nom de la focaccia qui a le plus d'ingrédients--
